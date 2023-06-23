@@ -102,7 +102,7 @@ export class MtxGridCell implements OnInit, DoCheck {
           {
             color: btn.pop?.okColor || 'primary',
             text: btn.pop?.okText || 'OK',
-            onClick: () => btn.click?.(rowData) || {},
+            onClick: () => btn.click?.(rowData),
           },
           {
             color: btn.pop?.closeColor,
