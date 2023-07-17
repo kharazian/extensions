@@ -184,8 +184,10 @@ export class MtxCarousel implements AfterContentInit, AfterViewInit, OnDestroy {
     this.decrementSelectedIndex();
   }
 
-  toSlide($event: any, selectedSlide: number) {
-    $event.stopPropagation();
+  toSlide(selectedSlide: number, $event?: any) {
+    if ($event) {
+      $event.stopPropagation();
+    }
     this.selectedIndex = selectedSlide;
     this.resetTimer();
     this.startTimer();

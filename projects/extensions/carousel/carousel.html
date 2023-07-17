@@ -21,7 +21,7 @@
     <button *ngFor="let slide of slides; let i = index"
       mat-mini-fab
       [disabled]="i == selectedIndex"
-      (click)="toSlide($event, i)">
+      (click)="toSlide(i, $event)">
     </button>
   </div>
   <div class="carousel-autoPlay" *ngIf="showAutoPlay">

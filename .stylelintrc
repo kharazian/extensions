@@ -18,6 +18,7 @@
     "no-empty-source": null,
     "number-max-precision": null,
     "number-leading-zero": "never",
+    "media-query-no-invalid": null,
     "selector-pseudo-element-no-unknown": [
       true,
       {
