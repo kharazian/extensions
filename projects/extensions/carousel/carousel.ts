@@ -4,6 +4,7 @@ import {
   Component,
   ContentChildren,
   HostListener,
+  Input,
   OnDestroy,
   QueryList,
   ViewEncapsulation,
@@ -28,17 +29,17 @@ export class MtxCarousel implements AfterContentInit, AfterViewInit, OnDestroy {
   stopSubject = new Subject<void>();
   timerIsStopped = false;
 
-  intervalTime = 3000;
-  autoPlay = true;
-  showAutoPlay = true;
-  showIndexPan = true;
-  showPrevNextButtons = true;
-  effectAutoPlayOnMouse = true;
-  enableMouseClick = true;
-  enableMouseWheel = true;
-  enableKeyboard = true;
-  infiniteLoop = true;
-  directionLoop: 'toRight' | 'toLeft' = 'toRight';
+  @Input() intervalTime = 3000;
+  @Input() autoPlay = true;
+  @Input() showAutoPlay = true;
+  @Input() showIndexPan = true;
+  @Input() showPrevNextButtons = true;
+  @Input() effectAutoPlayOnMouse = true;
+  @Input() enableMouseClick = true;
+  @Input() enableMouseWheel = true;
+  @Input() enableKeyboard = true;
+  @Input() infiniteLoop = true;
+  @Input() directionLoop: 'toRight' | 'toLeft' = 'toRight';
 
   @ContentChildren(MtxCarouselSlide) slides!: QueryList<MtxCarouselSlide>;
 
