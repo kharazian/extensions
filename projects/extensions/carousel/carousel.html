@@ -1,5 +1,4 @@
 <div class="carousel">
-
   <div class="carousel-container">
     <div class="carousel-content" [style.transform]="'translateX(' + (-selectedIndex * 100) + '%)'">
       <ng-content></ng-content>
@@ -17,17 +16,20 @@
     </svg>
   </button>
 
-  <div class="carousel-index" tabindex="-1" *ngIf="showIndexPan">
-    <button *ngFor="let slide of slides; let i = index"
-      mat-mini-fab
-      [disabled]="i == selectedIndex"
-      (click)="toSlide(i, $event)">
-    </button>
-  </div>
-  <div class="carousel-autoPlay" *ngIf="showAutoPlay">
-    <button mat-icon-button (click)="toggleAutoPlay($event)">
-      <mat-icon *ngIf="!autoPlay">play_arrow</mat-icon>
-      <mat-icon *ngIf="autoPlay">stop</mat-icon>
-    </button>
+  <div class="carousel-footer">
+    <div class="carousel-index" tabindex="-1" *ngIf="showIndexPan">
+      <button
+        *ngFor="let slide of slides; let i = index"
+        mat-mini-fab
+        [disabled]="i == selectedIndex"
+        (click)="toSlide(i, $event)"
+      >{{ slide.name }}</button>
+    </div>
+    <div class="carousel-autoPlay" *ngIf="showAutoPlay">
+      <button mat-icon-button (click)="toggleAutoPlay($event)">
+        <mat-icon *ngIf="!autoPlay">play_arrow</mat-icon>
+        <mat-icon *ngIf="autoPlay">stop</mat-icon>
+      </button>
+    </div>
   </div>
 </div>

@@ -6,4 +6,6 @@ import { Component, Input } from '@angular/core';
   templateUrl: './slide.html',
   styleUrls: ['./slide.scss'],
 })
-export class MtxCarouselSlide {}
+export class MtxCarouselSlide {
+  @Input() name: string = '';
+}

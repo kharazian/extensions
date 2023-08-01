@@ -1,5 +1,4 @@
 import {
-  AfterContentInit,
   AfterViewInit,
   Component,
   ContentChildren,
@@ -23,29 +22,25 @@ import { DOWN_ARROW, END, HOME, LEFT_ARROW, RIGHT_ARROW, UP_ARROW } from '@angul
   styleUrls: ['./carousel.scss'],
   encapsulation: ViewEncapsulation.None,
 })
-export class MtxCarousel implements AfterContentInit, AfterViewInit, OnDestroy {
+export class MtxCarousel implements AfterViewInit, OnDestroy {
   selectedIndex = 0;
   timer$ = new Observable<number>();
   stopSubject = new Subject<void>();
   timerIsStopped = false;
 
   @Input() intervalTime = 3000;
-  @Input() autoPlay = true;
-  @Input() showAutoPlay = true;
+  @Input() autoPlay = false;
+  @Input() showAutoPlay = false;
   @Input() showIndexPan = true;
   @Input() showPrevNextButtons = true;
   @Input() effectAutoPlayOnMouse = true;
-  @Input() enableMouseClick = true;
+  @Input() enableMouseClick = false;
   @Input() enableMouseWheel = true;
   @Input() enableKeyboard = true;
   @Input() infiniteLoop = true;
   @Input() directionLoop: 'toRight' | 'toLeft' = 'toRight';
 
   @ContentChildren(MtxCarouselSlide) slides!: QueryList<MtxCarouselSlide>;
-
-  ngAfterContentInit(): void {
-    console.log(this.slides);
-  }
 
   ngAfterViewInit(): void {
     this.resetTimer();
@@ -118,9 +113,9 @@ export class MtxCarousel implements AfterContentInit, AfterViewInit, OnDestroy {
       $event.preventDefault();
       const deltaY = Math.sign($event.deltaY);
 
-      if (deltaY < 0) {
+      if (deltaY > 0) {
         this.incrementSelectedIndex();
-      } else if (deltaY > 0) {
+      } else if (deltaY < 0) {
         this.decrementSelectedIndex();
       }
       this.resetTimer();
