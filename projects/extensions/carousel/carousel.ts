@@ -2,9 +2,11 @@ import {
   AfterViewInit,
   Component,
   ContentChildren,
+  EventEmitter,
   HostListener,
   Input,
   OnDestroy,
+  Output,
   QueryList,
   ViewEncapsulation,
 } from '@angular/core';
@@ -23,11 +25,20 @@ import { DOWN_ARROW, END, HOME, LEFT_ARROW, RIGHT_ARROW, UP_ARROW } from '@angul
   encapsulation: ViewEncapsulation.None,
 })
 export class MtxCarousel implements AfterViewInit, OnDestroy {
-  selectedIndex = 0;
+  _selectedIndex = 0;
+  public get selectedIndex(): number {
+    return this._selectedIndex;
+  }
+  set selectedIndex(v: number) {
+    this._selectedIndex = v;
+    this.selectedChanged.emit(v);
+  }
+
   timer$ = new Observable<number>();
   stopSubject = new Subject<void>();
   timerIsStopped = false;
 
+  @Output() selectedChanged = new EventEmitter<number>();
   @Input() intervalTime = 3000;
   @Input() autoPlay = false;
   @Input() showAutoPlay = false;
