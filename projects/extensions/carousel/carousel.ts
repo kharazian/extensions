@@ -46,7 +46,7 @@ export class MtxCarousel implements AfterViewInit, OnDestroy {
   @Input() showPrevNextButtons = true;
   @Input() effectAutoPlayOnMouse = true;
   @Input() enableMouseClick = false;
-  @Input() enableMouseWheel = true;
+  @Input() enableMouseWheel = false;
   @Input() enableKeyboard = true;
   @Input() infiniteLoop = true;
   @Input() directionLoop: 'toRight' | 'toLeft' = 'toRight';
