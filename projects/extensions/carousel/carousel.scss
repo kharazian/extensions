@@ -46,6 +46,10 @@
       border: none;
       padding: 10px;
     }
+
+    button:disabled {
+      background-color: lawngreen;
+    }
   }
 
   &-autoPlay {
@@ -56,8 +60,4 @@
       opacity: .8;
     }
   }
-}
-
-button:disabled {
-  background-color: lawngreen;
 }
